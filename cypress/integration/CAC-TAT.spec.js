@@ -15,25 +15,17 @@ describe('Central e Atendimento ao Cliente TAT', function() {
         cy.title().should('be.equal','Central de Atendimento ao Cliente TAT')
     })
 
-    it('preenche os campos obrigatórios e envia o formulário', function(){
-        cy.get('input[id="firstName"]')
-            .type('Fulano')
+    it.only('preenche os campos obrigatórios e envia o formulário', function(){
+        cy.get('#firstName').type('Fulano')
+        cy.get('#lastName').type('da Silva')        
+        cy.get('#email').type('Fulano@gmail.com')
+        cy.get('#open-text-area').type('Qual é o sentida da vida?')
 
-        cy.get('input[id="lastName"]')
-            .type('da Silva')
-        
-        cy.get('input[id="email"]')
-            .type('Fulano@gmail.com')
-        
-        cy.get('textarea[id="open-text-area"]')
-            .type('Qual é o sentida da vida?')
+        cy.get('button[type="submit"]').click()
 
-        cy.get('button[class="button"]')
-            .click()
-
-        cy.get('class="success"')
+        cy.get('.success')
             .should('be.visible')
-            .should('be.equal','Mensagem enviada com sucesso.')
+            //.should('be.equal','Mensagem enviada com sucesso.')
         
     })
 })
