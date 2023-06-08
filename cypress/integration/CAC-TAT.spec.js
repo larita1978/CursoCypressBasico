@@ -19,7 +19,7 @@ describe('Central e Atendimento ao Cliente TAT', function() {
         cy.get('#firstName').type('Fulano')
         cy.get('#lastName').type('da Silva')        
         cy.get('#email').type('Fulano@gmail.com')
-        cy.get('#open-text-area').type('Qual é o sentida da vida?')
+        cy.get('#open-text-area').type('Qual é o sentida da vida?', { delay : 0})
 
         cy.get('button[type="submit"]').click()
 
