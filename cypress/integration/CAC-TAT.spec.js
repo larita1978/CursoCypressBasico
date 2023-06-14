@@ -41,9 +41,17 @@ describe('Central e Atendimento ao Cliente TAT', function() {
             .should('be.visible')
     })
 
-    it.only('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
+    it('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
         cy.get('#phone')
             .type('ahbahdbw')
             .should('have.value', '')
+    })
+
+    it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function(){
+        cy.get('button[type="submit"]').click()
+        cy.get('.error > strong')
+            .should('be.visible')
+            .should('have.text', 'Valide os campos obrigatórios!')
+
     })
 })
