@@ -40,4 +40,10 @@ describe('Central e Atendimento ao Cliente TAT', function() {
         cy.get('.error')
             .should('be.visible')
     })
+
+    it.only('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
+        cy.get('#phone')
+            .type('ahbahdbw')
+            .should('have.value', '')
+    })
 })
