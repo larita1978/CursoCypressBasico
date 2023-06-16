@@ -47,11 +47,37 @@ describe('Central e Atendimento ao Cliente TAT', function() {
             .should('have.value', '')
     })
 
-    it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function(){
+    it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function(){
         cy.get('button[type="submit"]').click()
         cy.get('.error > strong')
             .should('be.visible')
             .should('have.text', 'Valide os campos obrigatórios!')
 
+    })
+
+    it.only('preenche e limpa os campos nome, sobrenome, email e telefone', function(){
+        cy.get('#firstName')
+            .type('Fulano')
+            .should('have.value', 'Fulano')
+            .clear()
+            .should('have.value', '')
+
+        cy.get('#lastName')
+            .type('da Silva')   
+            .should('have.value', 'da Silva')
+            .clear()
+            .should('have.value', '')
+
+        cy.get('#email')
+            .type('Fulano@gmail.com')
+            .should('have.value', 'Fulano@gmail.com')
+            .clear()
+            .should('have.value', '')
+
+        cy.get('#phone')
+            .type('999999999')
+            .should('have.value', '999999999')
+            .clear()
+            .should('have.value', '')
     })
 })
