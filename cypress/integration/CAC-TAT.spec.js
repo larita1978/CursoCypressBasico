@@ -136,7 +136,7 @@ describe('Central e Atendimento ao Cliente TAT', function() {
             })
     })
 
-    it.only('marca ambos checkboxes, depois desmarca o último', function(){
+    it('marca ambos checkboxes, depois desmarca o último', function(){
         cy.get('input[type="checkbox"]')
             .check()
             .should('be.checked')
@@ -162,12 +162,16 @@ describe('Central e Atendimento ao Cliente TAT', function() {
             })
     })
 
-    it.only('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', function(){
+    it('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', function(){
         cy.fixture('example.json').as('sampleFile')
         cy.get('#file-upload')
         .selectFile('@sampleFile')
         .should(function($input){
             expect($input[0].files[0].name).to.equal('example.json')
         })
+    })
+
+    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', function(){
+        cy.get('a').should('have.attr', 'target', '_blank')
     })
 })
