@@ -145,7 +145,7 @@ describe('Central e Atendimento ao Cliente TAT', function() {
             .should('not.be.checked')
     })
 
-    it.only('seleciona um arquivo da pasta fixtures',function(){
+    it('seleciona um arquivo da pasta fixtures',function(){
         cy.get('#file-upload')
             .should('not.have.value')
             .selectFile('cypress/fixtures/example.json')
@@ -175,7 +175,7 @@ describe('Central e Atendimento ao Cliente TAT', function() {
         cy.get('#privacy a').should('have.attr', 'target', '_blank')
     })
     
-    it.only('acessa a página da política de privacidade removendo o target e então clicando no link', function(){
+    it('acessa a página da política de privacidade removendo o target e então clicando no link', function(){
         cy.get('#privacy a').invoke('removeAttr', 'target')
         .click()
 
