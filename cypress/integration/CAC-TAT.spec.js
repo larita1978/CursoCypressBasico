@@ -51,10 +51,12 @@ describe('Central e Atendimento ao Cliente TAT', function() {
             .should('not.be.visible')
     })
 
-    it('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
-        cy.get('#phone')
-            .type('ahbahdbw')
-            .should('have.value', '')
+    Cypress._.times(6, function(){
+        it.only('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
+            cy.get('#phone')
+                .type('ahbahdbw')
+                .should('have.value', '')
+        })
     })
 
     it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function(){
