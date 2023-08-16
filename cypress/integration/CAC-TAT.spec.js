@@ -236,8 +236,9 @@ describe('Central e Atendimento ao Cliente TAT', function() {
       })
 
     it.only('preenche a area de texto usando o comando invoke', function(){ 
+        const longText = Cypress._.repeat('ola mundo',10)
         cy.get('#open-text-area')
-        .invoke('val', 'preenche a area de texto usando o comando invoke')
-        .should('have.value','preenche a area de texto usando o comando invoke')
+        .invoke('val', longText)
+        .should('have.value',longText)
     })
 })
