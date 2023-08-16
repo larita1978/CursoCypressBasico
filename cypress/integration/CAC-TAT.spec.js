@@ -234,4 +234,10 @@ describe('Central e Atendimento ao Cliente TAT', function() {
           .invoke('hide')
           .should('not.be.visible')
       })
+
+    it.only('preenche a area de texto usando o comando invoke', function(){ 
+        cy.get('#open-text-area')
+        .invoke('val', 'preenche a area de texto usando o comando invoke')
+        .should('have.value','preenche a area de texto usando o comando invoke')
+    })
 })
