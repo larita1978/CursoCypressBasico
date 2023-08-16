@@ -52,7 +52,7 @@ describe('Central e Atendimento ao Cliente TAT', function() {
     })
 
     Cypress._.times(6, function(){
-        it.only('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
+        it('valida se campo telefone fica vazio ao submeter um valor inválido no formulário ', function(){
             cy.get('#phone')
                 .type('ahbahdbw')
                 .should('have.value', '')
@@ -217,4 +217,21 @@ describe('Central e Atendimento ao Cliente TAT', function() {
         cy.tick(THREE_SECONDS_IN_MS)
         cy.get('.success').should('not.be.visible')
     })
+
+    it.only('exibe e esconde as mensagens de sucesso e erro usando o .invoke', () => {
+        cy.get('.success')
+          .should('not.be.visible')
+          .invoke('show')
+          .should('be.visible')
+          .and('contain', 'Mensagem enviada com sucesso.')
+          .invoke('hide')
+          .should('not.be.visible')
+        cy.get('.error')
+          .should('not.be.visible')
+          .invoke('show')
+          .should('be.visible')
+          .and('contain', 'Valide os campos obrigatórios!')
+          .invoke('hide')
+          .should('not.be.visible')
+      })
 })
