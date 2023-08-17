@@ -24,6 +24,7 @@
   "license": "MIT",
   "homepage": "https://github.com/wlsf82/cypress-basico-v2#readme",
   "dependencies": {
+    "chai": "^4.3.7",
     "cypress": "9.7.0"
   }
 }
