@@ -254,9 +254,13 @@ describe('Central e Atendimento ao Cliente TAT', function() {
         })
     })
 
-    it.only('Encontre o gato', function(){
+    it.only('Desafio: Encontre o gato', function(){
         cy.get('#cat')
         .invoke('show')
         .should('be.visible')
+        cy.get('#title')
+        .invoke('text', 'CAT TAT')
+        cy.get('#subtitle')
+        .invoke('text', 'I love cats!')
     })
 })
